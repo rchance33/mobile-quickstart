@@ -10,7 +10,7 @@ AUTH_TOKEN = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 # TwiML app outgoing connections will use
 APP_SID = 'APZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
 
-CALLER_ID = '+12345678901'
+CALLER_ID = '+19189924892'
 CLIENT = 'mobile-quickstart3'
 
 app = Flask(__name__)
@@ -30,7 +30,7 @@ def token():
   # This allows incoming connections to client (if specified)
   client = request.values.get('client')
   if client != None:
-    capability.allow_client_incoming(mobile-quickstart3)
+    capability.allow_client_incoming("mobile-quickstart3")
 
   # This returns a token to use with Twilio based on the account and capabilities defined above
   return capability.generate()
