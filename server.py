@@ -65,33 +65,33 @@ def call():
     # resp.dial.conference(to, callerId=caller_id)
   return str(resp)      
 
-@app.route('/mute', methods=['GET', 'POST'])
-def mute():
-  resp = twilio.twiml.Response()
-  from_value = request.values.get('From')
-  to = request.values.get('To')
-  if not (from_value and to):
-    return str(resp.say("Invalid request"))
-  from_client = from_value.startswith('client')
-  caller_id = os.environ.get("CALLER_ID", CALLER_ID)
-  mute = request.values.get('Mute')
+#@app.route('/mute', methods=['GET', 'POST'])
+#def mute():
+#  resp = twilio.twiml.Response()
+#  from_value = request.values.get('From')
+#  to = request.values.get('To')
+#  if not (from_value and to):
+#    return str(resp.say("Invalid request"))
+#  from_client = from_value.startswith('client')
+#  caller_id = os.environ.get("CALLER_ID", CALLER_ID)
+#  mute = request.values.get("Mute")
   
-  if mute == 'Yes':
-    if not from_client:
-      resp.dial(callerId=from_value).conference(CLIENT, muted='true')  
-    elif to.startswith("client:"): 
-      resp.dial(callerId=from_value).conference(to[7:], muted='true')
-    else:
-      resp.dial.conference(to, callerId=caller_id, muted='true')
-  else:
-    if not from_client:
-      resp.dial(callerId=from_value).conference(CLIENT, muted='false')  
-    elif to.startswith("client:"): 
-      resp.dial(callerId=from_value).conference(to[7:], muted='false')
-    else:
-      resp.dial.conference(to, callerId=caller_id, muted='false')
+#  if mute == 'Yes':
+#    if not from_client:
+#      resp.dial(callerId=from_value).conference(CLIENT, muted='true')  
+#    elif to.startswith("client:"): 
+#      resp.dial(callerId=from_value).conference(to[7:], muted='true')
+#    else:
+#      resp.dial.conference(to, callerId=caller_id, muted='true')
+#  else:
+#    if not from_client:
+#     resp.dial(callerId=from_value).conference(CLIENT, muted='false')  
+#    elif to.startswith("client:"): 
+#      resp.dial(callerId=from_value).conference(to[7:], muted='false')
+#    else:
+#      resp.dial.conference(to, callerId=caller_id, muted='false')
        
-  return str(resp)
+#  return str(resp)
   
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
