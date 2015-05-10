@@ -2,10 +2,11 @@ import os
 from flask import Flask, request
 from twilio.util import TwilioCapability
 import twilio.twiml
+from twilio.rest import TwilioRestClient
 ##
 # Account Sid and Auth Token can be found in your account dashboard
-ACCOUNT_SID = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-AUTH_TOKEN = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+ACCOUNT_SID = 'AC4cbe7e3cb0b70ab1eb2e5ccf81005c71'
+AUTH_TOKEN = 'b0ccc8c0fcb902a9531482c9e8911fac'
 
 # TwiML app outgoing connections will use
 APP_SID = 'APb7372771a18a38669a83e5f115dabeb8'
@@ -49,17 +50,49 @@ def call():
     return str(resp.say("Invalid request"))
   from_client = from_value.startswith('client')
   caller_id = os.environ.get("CALLER_ID", CALLER_ID)
+  
   if not from_client:
     # PSTN -> client
-    resp.dial(callerId=from_value).client(CLIENT)
+    # resp.dial(callerId=from_value).client(CLIENT)
+    resp.dial(callerId=from_value).conference(CLIENT)
   elif to.startswith("client:"):
     # client -> client
-    resp.dial(callerId=from_value).client(to[7:])
+    # resp.dial(callerId=from_value).client(to[7:])
+    resp.dial(callerId=from_value).conference(to[7:])
   else:
     # client -> PSTN
-    resp.dial(to, callerId=caller_id)
-  return str(resp)
+    # resp.dial(to, callerId=caller_id)
+    resp.dial.conference(to, callerId=caller_id)
+  return str(resp)      
 
+@app.route('/mute', methods=['GET', 'POST'])
+def mute():
+  resp = twilio.twiml.Response()
+  from_value = request.values.get('From')
+  to = request.values.get('To')
+  if not (from_value and to):
+    return str(resp.say("Invalid request"))
+  from_client = from_value.startswith('client')
+  caller_id = os.environ.get("CALLER_ID", CALLER_ID)
+  mute = request.values.get('Mute')
+  
+  if mute == 'Yes':
+    if not from_client:
+      resp.dial(callerId=from_value).conference(CLIENT, muted='true')  
+    elif to.startswith("client:"): 
+      resp.dial(callerId=from_value).conference(to[7:], muted='true')
+    else:
+      resp.dial.conference(to, callerId=caller_id, muted='true')
+  else:
+    if not from_client:
+      resp.dial(callerId=from_value).conference(CLIENT, muted='false')  
+    elif to.startswith("client:"): 
+      resp.dial(callerId=from_value).conference(to[7:], muted='false')
+    else:
+      resp.dial.conference(to, callerId=caller_id, muted='false')
+       
+  return str(resp)
+  
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
   resp = twilio.twiml.Response()
