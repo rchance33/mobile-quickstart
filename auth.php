@@ -14,7 +14,7 @@ if($_REQUEST['allowOutgoing'] != 'false')
     $capability->allowClientOutgoing($appSid);
 
 if($_REQUEST['client'] != null)
-    $capability->allowClientIncoming($appSid);
+    $capability->allowClientIncoming('mobile-quickstart4');
 // This would return a token to use with Twilio based on // the account and capabilities defined above 
 $token = $capability->generateToken();
 
