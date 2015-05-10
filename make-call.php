@@ -16,8 +16,8 @@
     $version = "2010-04-01";
  
     // Set our Account SID and AuthToken
-    $acctSid = 'AC4cbe7e3cb0b70ab1eb2e5ccf81005c71';
-    $authToken = 'b0ccc8c0fcb902a9531482c9e8911fac';
+    $acctSid = 'ACf820f938c757753436311d289f1918b3';
+    $authToken = 'f57f92a9db4d9f4845bf917b36c30e49';
         
     //Initalize the response URL
     $url = "http://mobile-quickstart4.herokuapp.com/join-conference.php";

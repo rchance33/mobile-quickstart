@@ -1,8 +1,8 @@
 <?php 
 require "Services/Twilio/Capability.php";
 
-$accountSid = "AC4cbe7e3cb0b70ab1eb2e5ccf81005c71"; 
-$authToken = "b0ccc8c0fcb902a9531482c9e8911fac";
+$accountSid = "ACf820f938c757753436311d289f1918b3"; 
+$authToken = "f57f92a9db4d9f4845bf917b36c30e49";
 
 // The app outgoing connections will use: 
 $appSid = "APb7372771a18a38669a83e5f115dabeb8";
