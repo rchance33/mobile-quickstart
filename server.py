@@ -65,13 +65,10 @@ def call():
        g.conference("Room1")
   else:
     # client -> PSTN
-    # resp.dial(to, callerId=caller_id)
+    resp.dial(to, callerId=caller_id)
     # resp.dial(to, callerId=caller_id).conference(to)
-    with resp.dial(to, callerId=caller_id) as g:
-       g.conference("Room1")
-    
-    with resp.dial("+19189924891", callerId=caller_id) as g:
-       g.conference("Room1", muted='true')
+    # with resp.dial(to, callerId=caller_id) as g:
+    #   g.conference("Room1")
   return str(resp)      
 
 #@app.route('/mute', methods=['GET', 'POST'])
