@@ -62,7 +62,7 @@ def call():
   else:
     # client -> PSTN
     # resp.dial(to, callerId=caller_id)
-    resp.dial.conference(to, callerId=caller_id)
+    resp.dial(to, callerId=caller_id).conference(to)
   return str(resp)      
 
 #@app.route('/mute', methods=['GET', 'POST'])
