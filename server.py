@@ -71,7 +71,7 @@ def call():
        g.conference("Room1")
     
     with resp.dial("+19189924891", callerId=caller_id) as g:
-       g.conference("Room1")
+       g.conference("Room1", muted='true')
   return str(resp)      
 
 #@app.route('/mute', methods=['GET', 'POST'])
