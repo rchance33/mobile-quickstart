@@ -53,16 +53,16 @@ def call():
   
   if not from_client:
     # PSTN -> client
-    resp.dial(callerId=from_value).client(CLIENT)
-    # resp.dial(callerId=from_value).conference(CLIENT)
+    # resp.dial(callerId=from_value).client(CLIENT)
+    resp.dial(callerId=from_value).conference(CLIENT)
   elif to.startswith("client:"):
     # client -> client
-    resp.dial(callerId=from_value).client(to[7:])
-    # resp.dial(callerId=from_value).conference(to[7:])
+    # resp.dial(callerId=from_value).client(to[7:])
+    resp.dial(callerId=from_value).conference(to[7:])
   else:
     # client -> PSTN
-    resp.dial(to, callerId=caller_id)
-    # resp.dial.conference(to, callerId=caller_id)
+    # resp.dial(to, callerId=caller_id)
+    resp.dial.conference(to, callerId=caller_id)
   return str(resp)      
 
 #@app.route('/mute', methods=['GET', 'POST'])
