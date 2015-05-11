@@ -51,12 +51,16 @@ def call():
   from_client = from_value.startswith('client')
   caller_id = os.environ.get("CALLER_ID", CALLER_ID)
   
+  mute = request.values.get("Mute")
+  if mute == 'true':
+    resp.enqueue(waitUrl='wait-music.xml')
+  
   if not from_client:
     # PSTN -> client
-    # resp.dial(callerId=from_value).client(CLIENT)
+    resp.dial(callerId=from_value).client(CLIENT)
     # resp.dial(callerId=from_value).conference(CLIENT)
-    with resp.dial(callerId=from_value).client(CLIENT) as g:
-       g.conference("Room1")
+    # with resp.dial(callerId=from_value).client(CLIENT) as g:
+    #   g.conference("Room1")
 
   elif to.startswith("client:"):
     # client -> client
