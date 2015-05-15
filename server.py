@@ -60,6 +60,21 @@ def call():
     resp.dial(to, callerId=caller_id)
   return str(resp)
 
+ # Delivers music after mute  
+@app.route('/mutesic', methods=['POST', 'GET'])
+def mute_music():
+  response = twilio.twiml.Response()
+  response.pause(length="2")
+  response.say("Thank you for calling Hot Coffey Design. Please hold")
+  response.play("https://s3.amazonaws.com/hotcoffeydesign/Uptown+Funk+Feat+Bruno+Mars+Mark+Ronson+-+1420814645+Part+1+of+5.mp3")
+  return str(response)
+
+#Launches mute. This is the one your in-app button should trigger
+@app.route('/mute', methods=['POST', 'GET'])
+def mute():
+  app_sid = os.environ.get("APP_SID", APP_SID)
+  call = client.calls.update(app_sid, url="/mutesic", method="POST")
+
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
   resp = twilio.twiml.Response()
