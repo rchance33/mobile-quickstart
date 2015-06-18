@@ -72,9 +72,12 @@ def mute_music():
 #Launches mute. This is the one your in-app button should trigger
 @app.route('/mute', methods=['POST', 'GET'])
 def mute():
-  app_sid = os.environ.get("APP_SID", APP_SID)
-  call = client.calls.update(app_sid, url="/mutesic", method="POST")
-
+  #We are testing code that makes our mute button redirect so we can hear on hold music for our customer
+  account_sid = os.environ.get("ACCOUNT_SID", ACCOUNT_SID)
+  auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
+  client = TwilioRestClient(account_sid, auth_token)
+  call = client.calls.update(app_sid, url="http://mobile-quickstart1.herokuapp.com/mutesic", method="POST")
+  print call.to
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
   resp = twilio.twiml.Response()
