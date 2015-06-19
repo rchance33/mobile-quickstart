@@ -77,7 +77,8 @@ def mute():
   auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
   client = TwilioRestClient(account_sid, auth_token)
   call = client.calls.update(app_sid, url="http://demo.twilio.com/docs/voice.xml", method="POST")
-  print call.to
+  ##We are going to x this out and try and see if code will initiate with out the print.to function
+  #print call.to
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
   resp = twilio.twiml.Response()
