@@ -73,10 +73,10 @@ def mute_music():
 @app.route('/mute', methods=['POST', 'GET'])
 def mute():
   #We are testing code that makes our mute button redirect so we can hear on hold music for our customer
-  account_sid = os.environ.get("ACCOUNT_SID", ACCOUNT_SID)
+  account_sid = "ACf820f938c757753436311d289f1918b3"
   auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
   client = TwilioRestClient(account_sid, auth_token)
-  call = client.calls.update(app_sid, url="http://mobile-quickstart1.herokuapp.com/music", method="POST")
+  call = client.calls.update("CA258827f115c996ec77bfb3dd13480d2b", url="http://mobile-quickstart1.herokuapp.com/music", method="POST")
   print call.to
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
