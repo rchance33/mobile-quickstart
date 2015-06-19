@@ -76,7 +76,7 @@ def mute():
   account_sid = "ACf820f938c757753436311d289f1918b3"
   auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
   client = TwilioRestClient(account_sid, auth_token)
-  call = client.calls.update("CA258827f115c996ec77bfb3dd13480d2b", url="http://mobile-quickstart1.herokuapp.com/music", method="POST")
+  call = client.calls.update(app_sid, url="http://mobile-quickstart1.herokuapp.com/music", method="POST")
   print call.to
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
