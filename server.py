@@ -34,6 +34,33 @@ def token():
 
   # This returns a token to use with Twilio based on the account and capabilities defined above
   return capability.generate()
+  
+  
+  
+  #We are adding a call queue in Python to see if it works.
+# Accept a POST request from Twilio, and provide TwiML to put caller
+# in a queue.
+@app.route('/caller', methods=['GET', 'POST'])
+def caller():
+    response = twilio.twiml.Response()
+   # Use Enqueue verb to place caller in a Queue
+    response.enqueue("Queue One",waitUrl="/music")
+  
+    return str(response)
+    
+#We are adding the second part of our code right here for agent to connect with caller
+# Accept a POST request from Twilio, and provide TwiML to connect agent
+# with first caller in the Queue.
+@app.route('/agent', methods=['GET', 'POST'])
+def agent():
+    response = twilio.twiml.Response()
+    # Dial into the Queue we placed the caller into to connect agent to
+    # first person in the Queue.
+    with response.dial() as dial:
+        dial.queue("Queue One")
+    return str(response)
+    
+    
 
 @app.route('/call', methods=['GET', 'POST'])
 def call():
