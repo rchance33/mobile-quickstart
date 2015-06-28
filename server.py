@@ -44,7 +44,7 @@ def token():
 def caller():
     response = twilio.twiml.Response()
    # Use Enqueue verb to place caller in a Queue
-    response.enqueue("Queue One",waitUrl="/music")
+    response.enqueue("Queue One") #,waitUrl="/music")
   
     return str(response)
     
