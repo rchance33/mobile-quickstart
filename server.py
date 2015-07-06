@@ -125,7 +125,7 @@ def mute():
   ##We are going to x this out and try and see if code will initiate with out the print.to function
   #print call.to
   
-  #we are moving secret key out of if block
+   #we are moving secret key out of if block
   app.secret_key='super duper blooper pooper mgruder key'
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
