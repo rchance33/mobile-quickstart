@@ -126,6 +126,9 @@ def mute():
   call = client.calls.update(app_sid, url="http://demo.twilio.com/docs/voice.xml", method="POST")
   ##We are going to x this out and try and see if code will initiate with out the print.to function
   #print call.to
+  
+  #we are moving secret key out of if block
+              app.secret_key='super duper blooper pooper mgruder key'
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
   resp = twilio.twiml.Response()
