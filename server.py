@@ -12,7 +12,7 @@ client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 # TwiML app outgoing connections will use
 APP_SID = 'APb7372771a18a38669a83e5f115dabeb8'
 
-CALLER_ID = '+19189924892'
+CALLER_ID = '+19189472310'
 CLIENT = 'mobile-quickstart4'
 
 app = Flask(__name__)
@@ -73,9 +73,9 @@ def music():
     
      
     #TODO: sms notifacation when someone calls
-    #client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
-    #call= client.calls.create(url="http://mobile-quickstart4.herokuapp.com/agent",to="+19189924892",from_="+19189472310") 
-    #print call.sid
+    client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+    call= client.calls.create(url="http://mobile-quickstart4.herokuapp.com/agent",to="+19189924892",from_="+19185849732") 
+    print call.sid
     #with response.gather(numDigits=1, action="/digit", method="POST") as g:
         #g.say("To continue the call, press 1. To leave a message, press 2.")
     return str(response)
