@@ -68,7 +68,7 @@ def agent():
 def music():
     response = twilio.twiml.Response()
     response.pause(length="2")
-    response.say("Hello thanks for calling blah blah blah! Please stay on the line and we will be with you shortly.")
+    response.say("A representitive will be with you shortly")
     response.play("https://s3.amazonaws.com/hotcoffeydesign/Uptown+Funk+Feat+Bruno+Mars+Mark+Ronson+-+1420814645+Part+1+of+5.mp3")
     #TODO: sms notifacation when someone calls
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
