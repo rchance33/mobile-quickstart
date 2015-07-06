@@ -1,11 +1,13 @@
 import os
-from flask import Flask, request
+from flask import Flask, request,session, url_for, render_template
 from twilio.util import TwilioCapability
+from twilio.rest import TwilioRestClient
 import twilio.twiml
 ##
 # Account Sid and Auth Token can be found in your account dashboard
 ACCOUNT_SID = 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 AUTH_TOKEN = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
 # TwiML app outgoing connections will use
 APP_SID = 'APb7372771a18a38669a83e5f115dabeb8'
