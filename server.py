@@ -70,8 +70,6 @@ def music():
     response.pause(length="2")
     response.say("Hello thanks for calling blah blah blah! Please stay on the line and we will be with you shortly.")
     response.play("https://s3.amazonaws.com/hotcoffeydesign/Uptown+Funk+Feat+Bruno+Mars+Mark+Ronson+-+1420814645+Part+1+of+5.mp3")
-    
-     
     #TODO: sms notifacation when someone calls
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
     call = client.calls.create(url="http://mobile-quickstart4.herokuapp.com/agent",to="+19189924892",from_="+19189472310") 
