@@ -61,6 +61,24 @@ def agent():
     return str(response)
     
     
+        # Deliver hold music when in Queue. 
+@app.route('/music', methods=['POST', 'GET'])
+def music():
+    response = twilio.twiml.Response()
+    response.pause(length="2")
+    response.say("Hello thanks for calling blah blah blah! Please stay on the line and we will be with you shortly.")
+    response.play("https://s3.amazonaws.com/hotcoffeydesign/Uptown+Funk+Feat+Bruno+Mars+Mark+Ronson+-+1420814645+Part+1+of+5.mp3")
+    
+     
+    #TODO: sms notifacation when someone calls
+    client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+    call= client.calls.create(url="http://mobile-quickstart-quick.herokuapp.com/agent",to="+19185849732",from_="+19188040630") 
+    print call.sid
+    #with response.gather(numDigits=1, action="/digit", method="POST") as g:
+        #g.say("To continue the call, press 1. To leave a message, press 2.")
+    return str(response)
+    
+    
 
 @app.route('/call', methods=['GET', 'POST'])
 def call():
