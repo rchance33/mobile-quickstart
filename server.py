@@ -128,7 +128,7 @@ def mute():
   #print call.to
   
   #we are moving secret key out of if block
-              app.secret_key='super duper blooper pooper mgruder key'
+  app.secret_key='super duper blooper pooper mgruder key'
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
   resp = twilio.twiml.Response()
