@@ -47,7 +47,7 @@ def caller():
     response = twilio.twiml.Response()
    # Use Enqueue verb to place caller in a Queue
     response.enqueue("Queue One",waitUrl="/music")
-    if response.dial=disconnect
+    if response.dial==disconnect
     member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
     print member.wait_time
     return str(response)
