@@ -72,7 +72,7 @@ def hold():
 member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
 print member.wait_time
     
-  return str(response)
+return str(response)
     
     
         # Deliver hold music when in Queue. 
