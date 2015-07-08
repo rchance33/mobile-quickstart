@@ -98,8 +98,8 @@ def music():
     return str(response)
     
     #We are making our hold queue for redirecting the caller to a new hold queue with music.
-    @app.route('/hold', methods=['GET', 'POST'])
-  def hold():
+@app.route('/hold', methods=['GET', 'POST'])
+def hold():
     response = twilio.twiml.Response()
    # Use Enqueue verb to place caller in a Queue
     response.enqueue("Queue One",waitUrl="/music")
