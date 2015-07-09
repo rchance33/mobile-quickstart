@@ -46,7 +46,7 @@ def token():
 def caller():
     response = twilio.twiml.Response()
    # Use Enqueue verb to place caller in a Queue
-    response.enqueue("Queue One",waitUrl="/music")
+    response.conference("Queue One",waitUrl="/music")
     #if response.dial!= None:
      #member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
     #print member.wait_time
@@ -61,7 +61,7 @@ def agent():
     # Dial into the Queue we placed the caller into to connect agent to
     # first person in the Queue.
     with response.dial() as dial:
-        dial.queue("Queue One")
+        dial.conference("Queue One")
     return str(response)
     
     #we are going to route the caller into this new hold queue when hold button is pushed.
