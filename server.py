@@ -65,18 +65,18 @@ def agent():
     return str(response)
     
     #we are going to route the caller into this new hold queue when hold button is pushed.
-@app.route('/ring', methods=['GET', 'POST'])
-def ring():
-    #response = twilio.twiml.Response()
+@app.route('/hold', methods=['GET', 'POST'])
+def hold():
+    response = twilio.twiml.Response()
     #Use Enqueue verb to place caller in a Queue
-    #response.enqueue("hold queue",waitUrl="/music")
+    response.enqueue("hold queue",waitUrl="/music")
     #We are going to put some code in here to see if it initiates to update our call to the hold queue
     #member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
     #print member.wait_time
-    client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
-    calls = client.calls.list(status=Call.IN_PROGRESS)
-    for c in calls:
-      c.route("https://mobile-quickstart-quick.herokuapp.com/hold",method="POST")
+    #client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+    #calls = client.calls.list(status=Call.IN_PROGRESS)
+    #for c in calls:
+      #c.route("https://mobile-quickstart-quick.herokuapp.com/hold",method="POST")
     
 
     return str(response)
@@ -98,8 +98,8 @@ def music():
     return str(response)
     
     #We are making our hold queue for redirecting the caller to a new hold queue with music.
-@app.route('/hold', methods=['GET', 'POST'])
-def hold():
+@app.route('/ring', methods=['GET', 'POST'])
+def ring():
     response = twilio.twiml.Response()
     #we are going to try new code here to route our caller to hold queue
     from_value = request.values.get('From')
@@ -109,7 +109,7 @@ def hold():
     return str(resp.say("Invalid request"))
    
    # Use Enqueue verb to place caller in a Queue
-    response.enqueue("Queue One",waitUrl="/music")
+    #response.enqueue("hold queue",waitUrl="/music")
   
     member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
     print member.wait_time
