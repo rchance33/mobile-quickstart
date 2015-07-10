@@ -27,12 +27,12 @@ def token():
 
   # This allows outgoing connections to TwiML application
   if request.values.get('allowOutgoing') != 'false':
-     capability.allow_client_outgoing(app_sid)
+     capability.allow_hold_outgoing(app_sid)
 
   # This allows incoming connections to client (if specified)
-  client = request.values.get('client')
-  if client != None:
-    capability.allow_client_incoming("mobile-quickstart4")
+  hold = request.values.get('hold')
+  if hold != None:
+    capability.allow_hold_incoming("mobile-quickstart4")
 
   # This returns a token to use with Twilio based on the account and capabilities defined above
   return capability.generate()
