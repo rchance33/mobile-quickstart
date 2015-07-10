@@ -101,11 +101,18 @@ def music():
 @app.route('/hold', methods=['GET', 'POST'])
 def hold():
     response = twilio.twiml.Response()
+    #we are going to try new code here to route our caller to hold queue
+    from_value = request.values.get('From')
+    to = request.values.get('To')
+    
+    if not (from_value and to):
+    return str(resp.say("Invalid request"))
+   
    # Use Enqueue verb to place caller in a Queue
     response.enqueue("Queue One",waitUrl="/music")
-    #if response.dial!= None:
-     #member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
-    #print member.wait_time
+  
+    member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
+    print member.wait_time
     return str(response)
     
     
