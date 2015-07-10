@@ -7,7 +7,7 @@ import twilio.twiml
 # Account Sid and Auth Token can be found in your account dashboard
 ACCOUNT_SID = 'ACf820f938c757753436311d289f1918b3'
 AUTH_TOKEN = 'f57f92a9db4d9f4845bf917b36c30e49'
-hold = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
 # TwiML app outgoing connections will use
 APP_SID = 'APb7372771a18a38669a83e5f115dabeb8'
@@ -30,7 +30,7 @@ def token():
      capability.allow_hold_outgoing(app_sid)
 
   # This allows incoming connections to client (if specified)
-  hold = request.values.get('hold')
+  hold = request.values.get('client')
   if hold != None:
     capability.allow_hold_incoming("mobile-quickstart4")
 
