@@ -103,9 +103,9 @@ def ring():
     response = twilio.twiml.Response()
     #we are going to try new code here to route our caller to hold queue
     from_value = request.values.get('From')
-    to = request.values.get('To')
+    Hold = request.values.get('Hold')
     
-    if not (from_value and to):
+    if not (from_value and Hold):
      return str(resp.say("Invalid request"))
    
    # Use Enqueue verb to place caller in a Queue
