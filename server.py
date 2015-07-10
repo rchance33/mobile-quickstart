@@ -61,7 +61,7 @@ def agent():
     # Dial into the Queue we placed the caller into to connect agent to
     # first person in the Queue.
     with response.dial() as dial:
-        dial.enqueue("Queue One")
+        dial.queue("Queue One")
     return str(response)
     
     #we are going to route the caller into this new hold queue when hold button is pushed.
