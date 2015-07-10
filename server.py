@@ -98,22 +98,22 @@ def music():
     return str(response)
     
     #We are making our hold queue for redirecting the caller to a new hold queue with music.
-@app.route('/ring', methods=['GET', 'POST'])
-def ring():
-    response = twilio.twiml.Response()
+#@app.route('/ring', methods=['GET', 'POST'])
+#def ring():
+    #response = twilio.twiml.Response()
     #we are going to try new code here to route our caller to hold queue
-    from_value = request.values.get('From')
-    Hold = request.values.get('Hold')
+    #from_value = request.values.get('From')
+    #Hold = request.values.get('Hold')
     
-    if not (from_value and Hold):
-     return str(resp.say("Invalid request"))
+    #if not (from_value and Hold):
+     #return str(resp.say("Invalid request"))
    
    # Use Enqueue verb to place caller in a Queue
     #response.enqueue("hold queue",waitUrl="/music")
   
-    member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
-    print member.wait_time
-    return str(response)
+    #member = client.members('/caller').dequeue("https://mobile-quickstart-quick.herokuapp.com/hold","Front",method="POST")
+    #print member.wait_time
+    #return str(response)
     
     
 
