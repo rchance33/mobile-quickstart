@@ -13,7 +13,7 @@ client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 APP_SID = 'APb7372771a18a38669a83e5f115dabeb8'
 
 CALLER_ID = '+19189924892'
-#CLIENT = 'mobile-quickstart4'
+CLIENT = 'mobile-quickstart4'
 
 app = Flask(__name__)
 
@@ -27,12 +27,12 @@ def token():
 
   # This allows outgoing connections to TwiML application
   if request.values.get('allowOutgoing') != 'false':
-     capability.allow_hold_outgoing(app_sid)
+     capability.allow_client_outgoing(app_sid)
 
   # This allows incoming connections to client (if specified)
-  hold = request.values.get('hold')
-  if hold != None:
-    capability.allow_hold_incoming("mobile-quickstart4")
+  client = request.values.get('client')
+  if client != None:
+    capability.allow_client_incoming("mobile-quickstart4")
 
   # This returns a token to use with Twilio based on the account and capabilities defined above
   return capability.generate()
