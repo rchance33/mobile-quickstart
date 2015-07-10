@@ -30,7 +30,7 @@ def token():
      capability.allow_hold_outgoing(app_sid)
 
   # This allows incoming connections to client (if specified)
-  #hold = request.values.get('hold')
+  hold = request.values.get('hold')
   if hold != None:
     capability.allow_hold_incoming("mobile-quickstart4")
 
