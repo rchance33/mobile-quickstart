@@ -13,7 +13,7 @@ client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 APP_SID = 'APb7372771a18a38669a83e5f115dabeb8'
 
 CALLER_ID = '+19189924892'
-CLIENT = 'mobile-quickstart4'
+#CLIENT = 'mobile-quickstart4'
 
 app = Flask(__name__)
 
