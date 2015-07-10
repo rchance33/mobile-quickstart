@@ -106,7 +106,7 @@ def ring():
     to = request.values.get('To')
     
     if not (from_value and to):
-    return str(resp.say("Invalid request"))
+     return str(resp.say("Invalid request"))
    
    # Use Enqueue verb to place caller in a Queue
     #response.enqueue("hold queue",waitUrl="/music")
