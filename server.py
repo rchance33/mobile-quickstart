@@ -31,7 +31,7 @@ def token():
 
   # This allows incoming connections to client (if specified)
   #we are testing new code here to try and ignite our hold button
-  hold_queue = request.values.get('hold_queue')
+  hold = request.values.get('hold')
   
   client = request.values.get('client')
   if client != None:
@@ -68,8 +68,8 @@ def agent():
     return str(response)
     
     #we are going to route the caller into this new hold queue when hold button is pushed.
-@app.route('/hold_queue', methods=['GET', 'POST'])
-def hold_queue():
+@app.route('/hold', methods=['GET', 'POST'])
+def hold():
     response = twilio.twiml.Response()
     #Use Enqueue verb to place caller in a Queue
     response.enqueue("hold queue",waitUrl="/music")
