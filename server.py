@@ -50,7 +50,7 @@ def caller():
     response = twilio.twiml.Response()
     #we are going to try a conference now just like the queue's
     with response.dial() as dial:
-    dial.conference("talking conference", waitUrl="/music)
+        dial.conference("talking conference", waitUrl="/music)
       
    # Use Enqueue verb to place caller in a Queue
     #response.enqueue("Queue One",waitUrl="/music")
