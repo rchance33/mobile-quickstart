@@ -31,7 +31,7 @@ def token():
 
   # This allows incoming connections to client (if specified)
   #we are testing new code here to try and ignite our hold button
-  hold = request.values.get('hold')
+  #hold = request.values.get('hold')
   
   client = request.values.get('client')
   if client != None:
