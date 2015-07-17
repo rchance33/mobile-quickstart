@@ -68,7 +68,7 @@ def agent():
     # Dial into the Queue we placed the caller into to connect agent to
     # first person in the Queue.
     with response.dial() as dial:
-        dial.conference("talking conference")
+        dial.conference("talking conference,beep="false"")
     return str(response)
     
     #we are going to route the caller into this new hold queue when hold button is pushed.
