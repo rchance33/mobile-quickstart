@@ -75,7 +75,7 @@ def agent():
     #we are going to route the caller into this new hold queue when hold button is pushed.
 @app.route('/hold', methods=['GET', 'POST'])
 def hold():
-    response = twilio.twiml.Response()
+    #response = twilio.twiml.Response()
     #Use Enqueue verb to place caller in a Queue
     
     #with response.dial() as dial:
@@ -91,7 +91,7 @@ def hold():
       c.route("https://mobile-quickstart4.herokuapp.com/hold",method="POST")
     
 
-    return str(response)
+    #return str(response)
     
     
         # Deliver hold music when in Queue. 
