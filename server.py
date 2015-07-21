@@ -85,7 +85,7 @@ def hold():
     ACCOUNT_SID = 'ACf820f938c757753436311d289f1918b3'
     AUTH_TOKEN = 'f57f92a9db4d9f4845bf917b36c30e49'
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
-    calls = client.calls.list(status=Call.IN_PROGRESS)
+    call = client.calls.list(status=Call.IN_PROGRESS)
     for c in calls:
       c.route("https://mobile-quickstart4.herokuapp.com/hold",method="POST")
     
