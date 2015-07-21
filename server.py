@@ -2,6 +2,7 @@ import os
 from flask import Flask, request,session, url_for, render_template
 from twilio.util import TwilioCapability
 from twilio.rest import TwilioRestClient
+from twilio.rest.resources import Call
 import twilio.twiml
 
 # Account Sid and Auth Token can be found in your account dashboard
@@ -85,7 +86,7 @@ def hold():
     ACCOUNT_SID = 'ACf820f938c757753436311d289f1918b3'
     AUTH_TOKEN = 'f57f92a9db4d9f4845bf917b36c30e49'
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
-    call = client.calls.list(status=Call.IN_PROGRESS)
+    calls = client.calls.list(status=Call.IN_PROGRESS)
     for c in calls:
       c.route("https://mobile-quickstart4.herokuapp.com/hold",method="POST")
     
