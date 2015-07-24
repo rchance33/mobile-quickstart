@@ -99,7 +99,7 @@ def hold():
 def music():
     response = twilio.twiml.Response()
     response.pause(length="2")
-    response.say("A representitive will be with you shortly")
+    response.say("You are one awesome MOFO! It must be nice to look at an angel in the mirror every morning.")
     response.play("https://s3.amazonaws.com/hotcoffeydesign/Uptown+Funk+Feat+Bruno+Mars+Mark+Ronson+-+1420814645+Part+1+of+5.mp3")
     #TODO: sms notifacation when someone calls
     #client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
