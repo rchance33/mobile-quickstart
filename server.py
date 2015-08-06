@@ -6,15 +6,15 @@ from twilio.rest.resources import Call
 import twilio.twiml
 
 # Account Sid and Auth Token can be found in your account dashboard
-ACCOUNT_SID = 'ACf820f938c757753436311d289f1918b3'
-AUTH_TOKEN = 'f57f92a9db4d9f4845bf917b36c30e49'
+ACCOUNT_SID = 'AC8302f14d2bcd72f5da8b56254f628804'
+AUTH_TOKEN = '6799edbf728d6fff733388997bbaa00f'
 client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
 # TwiML app outgoing connections will use
-APP_SID = 'APb7372771a18a38669a83e5f115dabeb8'
+APP_SID = 'AP1444a5cb5956f507a9c627c6eadf33a7'
 
-CALLER_ID = '+19189924892'
-CLIENT = 'mobile-quickstart4'
+CALLER_ID = '+19189924742'
+CLIENT = 'mobile-quickstart2'
 
 app = Flask(__name__)
 
@@ -36,7 +36,7 @@ def token():
   
   client = request.values.get('client')
   if client != None:
-    capability.allow_client_incoming("mobile-quickstart4")
+    capability.allow_client_incoming("mobile-quickstart2")
 
   # This returns a token to use with Twilio based on the account and capabilities defined above
   return capability.generate()
